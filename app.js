@@ -9,7 +9,7 @@ var todoRoutes = require("./routes/todos.js")
 // is passed in to json.
 
 app.get("/", function(req, res) {
-	res.json("Hello from the root route");
+	res.send("Hello from the root route");
 });
 
 app.use("/api/todos", todoRoutes);
