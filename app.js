@@ -1,14 +1,21 @@
 var express = require("express"),
-	app		= express();
+	app		= express(),
+	port	= process.env.PORT || 3000;
 
+
+// Can use res.send or res.json to send json.
+// However res.json explicitly will convert whatever
+// is passed in to json.
 
 app.get("/", function(req, res) {
-	res.send("Hi there from express!");
+	res.send({});
+})
+
+app.get("/happy", function(req, res) {
+	res.send(":)");
 })
 
 
-
-
-app.listen(3000, function() {
+app.listen(port, function() {
 	console.log("App is running on port 3000.")
 });
