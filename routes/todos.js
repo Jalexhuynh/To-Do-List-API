@@ -22,4 +22,26 @@ router.post("/", function(req, res) {
 	})
 });
 
+router.get("/:todoId", function(req, res) {
+	db.Todo.findById(req.params.todoId)
+	.then(function(foundTodo) {
+		res.json(foundTodo);
+	})
+	.catch(function(err) {
+		res.send(err);
+	})
+})
+
+router.put("/:todoId", function(req, res) {
+	db.Todo.findOneAndUpdate({_id: req.params.todoId}, req.body, {new: true})
+	// {new: true} will enable the code to respond with
+	// the newly updated todo, rather than old.
+	.then(function(todo) {
+		res.json(todo);
+	})
+	.catch(function(err) {
+		res.send(err);
+	})
+})
+
 module.exports = router;
